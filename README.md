@@ -1,1 +1,1 @@
-Das wird unser schulwebshop 
+Das wird unser schul-web-shop 
