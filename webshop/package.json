@@ -1,0 +1,14 @@
+{
+  "name": "my-webshop",
+  "version": "1.0.0",
+  "description": "Ein einfacher Webshop",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "author": "Marc Stadler",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.19.2"
+  }
+}

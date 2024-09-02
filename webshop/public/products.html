@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Produkte - Hustle City</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap">
+    <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+
+<header>
+    <h1>Produkte</h1>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="products.html">Produkte</a>
+        <a href="contact.html">Kontakt</a>
+    </nav>
+</header>
+
+<div class="container">
+    <input type="text" id="search-bar" placeholder="Suche nach Produkten..." onkeyup="filterProducts()">
+    <div class="product-list" id="product-list">
+        <!-- Produkt 1 -->
+        <div class="product">
+            <img src="img/Stift.jpeg" alt="Stift">
+            <h3>Stift</h3>
+            <p>Beschreibung von Produkt 1</p>
+            <div class="price">19.90Fr</div>
+            <a href="#" class="buy-btn">Kaufen</a>
+        </div>
+        <!-- Produkt 2 -->
+        <div class="product">
+            <img src="img/radiergummi.jpeg" alt="Radiergummi">
+            <h3>Radiergummi</h3>
+            <p>Beschreibung von Produkt 2</p>
+            <div class="price">29.90Fr</div>
+            <a href="#" class="buy-btn">Kaufen</a>
+        </div>
+        <!-- Produkt 3 -->
+        <div class="product">
+            <img src="img/lineal.jpeg" alt="Lineal">
+            <h3>Lineal</h3>
+            <p>Beschreibung von Produkt 3</p>
+            <div class="price">39.90Fr</div>
+            <a href="#" class="buy-btn">Kaufen</a>
+        </div>
+    </div>
+</div>
+
+<footer>
+    <p>&copy; 2024 Hustle City</p>
+</footer>
+
+<script>
+    function filterProducts() {
+        var input, filter, productList, products, productName, i, txtValue;
+        input = document.getElementById('search-bar');
+        filter = input.value.toLowerCase();
+        productList = document.getElementById('product-list');
+        products = productList.getElementsByClassName('product');
+        
+        for (i = 0; i < products.length; i++) {
+            productName = products[i].getElementsByTagName("h3")[0];
+            txtValue = productName.textContent || productName.innerText;
+            if (txtValue.toLowerCase().indexOf(filter) > -1) {
+                products[i].style.display = "";
+            } else {
+                products[i].style.display = "none";
+            }
+        }
+    }
+</script>
+
+</body>
+</html>

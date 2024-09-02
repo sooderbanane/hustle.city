@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Willkommen</h1>
+    <% if (session.userId) { %>
+        <p>Du bist eingeloggt!</p>
+    <% } else { %>
+        <p>Du bist nicht eingeloggt. <a href="/login">Login</a> oder <a href="/register">Registrieren</a></p>
+    <% } %>
+</body>
+</html>
