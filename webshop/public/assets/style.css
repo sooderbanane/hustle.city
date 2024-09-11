@@ -11,7 +11,7 @@ header {
     color: #fff;
     padding: 5px;
     text-align: center;
-    position: relative; /* Ermöglicht die Positionierung von Kindern wie .shop-logo und .auth-links */
+    position: relative; 
 }
 
 nav {
@@ -136,6 +136,7 @@ footer {
     max-width: 100px; /* Größe des Logos anpassen */
     height: auto;
 }
+
 
 
 
