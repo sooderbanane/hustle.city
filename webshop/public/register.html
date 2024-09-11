@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Konto erstellen - Mein Webshop</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap">
+    <link rel="stylesheet" href="css/register.css">
+  
+
+</head>
+<body>
+
+<div class="form-container">
+    <h1>Konto erstellen</h1>
+    <form>
+        <label for="username">Benutzername:</label>
+        <input type="text" id="username" name="username" required>
+        
+        <label for="email">E-Mail:</label>
+        <input type="email" id="email" name="email" required>
+        
+        <label for="password">Passwort:</label>
+        <input type="password" id="password" name="password" required>
+        
+        <label for="confirm_password">Passwort bestätigen:</label>
+        <input type="password" id="confirm_password" name="confirm_password" required>
+        
+        <input type="submit" value="Konto erstellen">
+    </form>
+    <a href="login.html" class="switch-link">Bereits ein Konto? Anmelden</a>
+    <a href="index.html" class="back-button">Zurück zur Startseite</a>
+</div>
+
+<script>
+    // Bildpfaden
+    const images = [
+        'img/Hintergrund2.jpg',
+        'img/Hintergrund3.jpg',
+        'img/Hintergrund4.jpg'
+    ];
+
+    let currentIndex = 0; 
+    const changeInterval =  30 * 1000; //  in Millisekunden
+
+    // Funktion zum Ändern des Hintergrundbildes
+    function changeBackground() {
+        currentIndex = (currentIndex + 1) % images.length; // Nächster Index, Schleife zurück zum ersten Bild, wenn am Ende
+        document.body.style.backgroundImage = `url('${images[currentIndex]}')`;
+    }
+
+    // Initiales Setzen des Hintergrunds
+    document.body.style.backgroundImage = `url('${images[currentIndex]}')`;
+
+    // Hintergrundwechsel alle 5 Minuten
+    setInterval(changeBackground, changeInterval);
+</script>
+
+</body>
+</html>
