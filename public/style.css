@@ -1,0 +1,91 @@
+/* style.css */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-image: url('img/Hintergrund2.jpg'); /* Dein Hintergrundbild */
+    background-size: cover;
+    background-position: center;
+    background-color: #f4f4f4; /* Fallback-Farbe */
+    font-family: 'Roboto', sans-serif; /* Schriftart */
+}
+
+.container {
+    background-color: rgba(255, 255, 255, 0.9); /* Weiß mit 90% Deckkraft */
+    padding: 30px; /* Mehr Padding für bessere Benutzererfahrung */
+    border-radius: 10px; /* Abgerundete Ecken */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Tieferer Schatten */
+    max-width: 400px; /* Maximale Breite */
+    width: 100%; /* Volle Breite */
+    text-align: center; /* Textzentrierung */
+    backdrop-filter: blur(5px); /* Weichzeichner-Effekt */
+    border: 1px solid rgba(0, 0, 0, 0.1); /* Halbtransparente Umrandung */
+}
+
+.form-title {
+    margin-bottom: 20px; /* Abstand zum Titel */
+    font-size: 28px; /* Schriftgröße für Titel */
+    color: #333; /* Titel-Farbe */
+}
+
+form {
+    margin-bottom: 20px; /* Abstand zum Formular */
+}
+
+.label {
+    display: block; /* Block-Element für Labels */
+    margin: 10px 0 5px; /* Abstand um Labels */
+    color: #555; /* Label-Farbe */
+}
+
+input[type="text"], input[type="password"], input[type="email"] {
+    width: 90%; /* Breite der Eingabefelder */
+    padding: 10px; /* Innenabstand */
+    margin: 5px 0 15px; /* Abstand zwischen den Eingabefeldern */
+    border: 1px solid #ccc; /* Rahmenfarbe */
+    border-radius: 5px; /* Abgerundete Ecken */
+    font-size: 16px; /* Schriftgröße */
+}
+
+input[type="submit"], .btn {
+    width: 100%; /* Volle Breite für Buttons */
+    padding: 10px; /* Innenabstand */
+    border: none; /* Kein Rahmen */
+    border-radius: 5px; /* Abgerundete Ecken */
+    background-color: #007BFF; /* Hintergrundfarbe */
+    color: #fff; /* Textfarbe */
+    font-size: 16px; /* Schriftgröße */
+    cursor: pointer; /* Zeigerzeiger für Hover */
+    transition: background 0.3s; /* Übergangseffekt */
+}
+
+input[type="submit"]:hover, .btn:hover {
+    background-color: #0056b3; /* Dunklere Farbe bei Hover */
+}
+
+.back-button, .switch-link {
+    display: inline-block; /* Inline-Block für Links */
+    margin-top: 10px; /* Abstand nach oben */
+    text-decoration: none; /* Kein Unterstrich */
+    color: #007BFF; /* Link-Farbe */
+    border: 1px solid #007BFF; /* Rahmenfarbe */
+    padding: 10px 20px; /* Innenabstand */
+    border-radius: 5px; /* Abgerundete Ecken */
+    background-color: #fff; /* Hintergrundfarbe */
+    font-weight: 500; /* Schriftgewicht */
+}
+
+.back-button:hover, .switch-link:hover {
+    background-color: #f4f4f4; /* Hintergrundfarbe bei Hover */
+}
+
+.switch-link {
+    margin-top: 20px; /* Abstand nach oben */
+}

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registrierung</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <script type="module" src="js/firebaseauth.js"></script>
+</head>
+<body>
+    <div class="container" id="signup">
+      <h1 class="form-title">Registrieren</h1>
+      <form method="post" action="">
+        <div id="signUpMessage" class="messageDiv" style="display:none;"></div>
+        <div class="input-group">
+           <i class="fas fa-user"></i>
+           <input type="text" id="fName" placeholder="Vorname" required>
+           <label for="fname">Vorname</label>
+        </div>
+        <div class="input-group">
+            <i class="fas fa-user"></i>
+            <input type="text" id="lName" placeholder="Nachname" required>
+            <label for="lName">Nachname</label>
+        </div>
+        <div class="input-group">
+            <i class="fas fa-envelope"></i>
+            <input type="email" id="rEmail" placeholder="E-Mail" required>
+            <label for="rEmail">E-Mail</label>
+        </div>
+        <div class="input-group">
+            <i class="fas fa-lock"></i>
+            <input type="password" id="rPassword" placeholder="Passwort" required>
+            <label for="rPassword">Passwort</label>
+        </div>
+       <button class="btn" id="submitSignUp">Registrieren</button>
+      </form>
+      <div class="links">
+        <p>Haben Sie bereits ein Konto?</p>
+        <a href="login.html" id="signInButton">Einloggen</a>
+      </div>
+    </div>
+
+    <script src="js/script.js"></script>
+
+    <script>
+        // Bildpfaden
+        const images = [
+            'img/Hintergrund2.jpg',
+            'img/Hintergrund3.jpg',
+            'img/Hintergrund4.jpg'
+        ];
+    
+        let currentIndex = 0; 
+        const changeInterval = 30 * 5 * 1000; // in Millisekunden 
+    
+        // Funktion zum Ändern des Hintergrundbildes
+        function changeBackground() {
+            currentIndex = (currentIndex + 1) % images.length; // Nächster Index, Schleife zurück zum ersten Bild, wenn am Ende
+            document.body.style.backgroundImage = `url('${images[currentIndex]}')`;
+        }
+    
+        // Initiales Setzen des Hintergrunds
+        document.body.style.backgroundImage = `url('${images[currentIndex]}')`;
+    
+        // Hintergrundwechsel 
+        setInterval(changeBackground, changeInterval);
+    </script>
+</body>
+</html>

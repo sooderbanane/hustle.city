@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Produkte - Hustle City</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap">
+    <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+
+<header>
+    <h1>Produkte</h1>
+    <img src="img/Logo 1.webp" alt="Shop Logo" class="shop-logo">
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="products.html">Produkte</a>
+        <a href="contact.html">Kontakt</a>
+    </nav>
+    <div class="auth-links">
+        <a href="dashboard.html" class="button">Zum Dashboard</a>
+        <a href="login.html">Anmelden</a>
+        <a href="register.html">Registrieren</a>
+    </div>
+</header>
+
+<div class="container">
+    <input type="text" id="search-bar" placeholder="Suche nach Produkten..." onkeyup="filterProducts()">
+    <div class="product-list" id="product-list">
+        <!-- Produkt 1 -->
+        <div class="product">
+            <img src="img/Stift.jpeg" alt="Stift">
+            <h3>Stift</h3>
+            <p>Mit Stift kannst du auf Tische Schreiben</p>
+            <div class="price">19.90Fr</div>
+            <a href="#" class="buy-btn">Kaufen</a>
+        </div>
+        <!-- Produkt 2 -->
+        <div class="product">
+            <img src="img/radiergummi.jpeg" alt="Radiergummi">
+            <h3>Radiergummi</h3>
+            <p>Mit Radiergummi kannst du Stift Radieren</p>
+            <div class="price">29.90Fr</div>
+            <a href="#" class="buy-btn">Kaufen</a>
+        </div>
+        <!-- Produkt 3 -->
+        <div class="product">
+            <img src="img/lineal.jpeg" alt="Lineal">
+            <h3>Lineal</h3>
+            <p>Mit Lineal kannst du den Tisch Messen</p>
+            <div class="price">39.90Fr</div>
+            <a href="#" class="buy-btn">Kaufen</a>
+        </div>
+        
+    </div>
+</div>
+
+<footer>
+    <p>&copy; 2024 Hustle City</p>
+    <p>&copy;Kontakt: info@hustlecity.de</p>
+</footer>
+
+<script>
+    function filterProducts() {
+        var input, filter, productList, products, productName, i, txtValue;
+        input = document.getElementById('search-bar');
+        filter = input.value.toLowerCase();
+        productList = document.getElementById('product-list');
+        products = productList.getElementsByClassName('product');
+        
+        for (i = 0; i < products.length; i++) {
+            productName = products[i].getElementsByTagName("h3")[0];
+            txtValue = productName.textContent || productName.innerText;
+            if (txtValue.toLowerCase().indexOf(filter) > -1) {
+                products[i].style.display = "";
+            } else {
+                products[i].style.display = "none";
+            }
+        }
+    }
+</script>
+
+</body>
+</html>
