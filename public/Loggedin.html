@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hustle City - Produkte</title>
+    <link rel="icon" href="assets/Logo 1.webp" type="image/x-icon">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        /* Overlay-Stil */
+        #cart-overlay {
+            display: none; /* Standardmäßig versteckt */
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .cart-content {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            width: 400px;
+            max-width: 90%;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .cart-content h2 {
+            margin-top: 0;
+        }
+
+        .close-btn {
+            cursor: pointer;
+            float: right;
+            font-size: 20px;
+            color: #999;
+        }
+
+        .close-btn:hover {
+            color: #000;
+        }
+
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+
+        .cart-item span {
+            font-weight: bold;
+        }
+
+        .remove-btn {
+            background: none;
+            border: none;
+            color: red;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .checkout-btn {
+            display: block;
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #007BFF;
+            color: #fff;
+            text-align: center;
+            border-radius: 5px;
+            text-decoration: none;
+        }
+
+        .checkout-btn:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Willkommen bei Hustle City</h1>
+    <img src="assets/Logo 1.webp" alt="Shop Logo" class="shop-logo">
+    <nav>
+        <a href="Loggedin.html">Home</a>
+        <a href="loginproducts.html">Produkte</a>
+        <a href="logincontact.html">Kontakt</a>
+    </nav>
+    <div class="auth-links">
+        <a href="#" class="warenkorb-link" onclick="toggleCart()">
+            <i class="fas fa-shopping-cart"></i>
+        </a>
+        <a href="konto.html" class="konto-link">
+            <i class="fas fa-user"></i>
+        </a>
+    </div>
+</header>
+
+<div id="cart-overlay">
+    <div class="cart-content">
+        <span class="close-btn" onclick="toggleCart()">&times;</span>
+        <h2>Warenkorb</h2>
+        <div id="cart">
+            <!-- Warenkorb-Inhalt wird hier hinzugefügt -->
+        </div>
+        <a href="checkout.html" class="checkout-btn">Zur Kasse</a>
+    </div>
+</div>
+
+<div class="container">
+    <h2>Unsere Top-Produkte</h2>
+    <div class="product-list" id="product-list">
+        <!-- Produkt 1 -->
+        <div class="product">
+            <img src="img/Stift.jpeg" alt="Produkt 1">
+            <h3>Stift</h3>
+            <p>Mit Stift kannst du auf Tische Schreiben</p>
+            <div class="price">19.90Fr</div>
+            <button class="buy-btn" onclick="addToCart('Stift', 19.90)">Kaufen</button>
+        </div>
+        <!-- Produkt 2 -->
+        <div class="product">
+            <img src="img/radiergummi.jpeg" alt="Produkt 2">
+            <h3>Radiergummi</h3>
+            <p>Mit Radiergummi kannst du Stift Radieren</p>
+            <div class="price">29.90Fr</div>
+            <button class="buy-btn" onclick="addToCart('Radiergummi', 29.90)">Kaufen</button>
+        </div>
+        <!-- Produkt 3 -->
+        <div class="product">
+            <img src="img/lineal.jpeg" alt="Produkt 3">
+            <h3>Lineal</h3>
+            <p>Mit Lineal kannst du den Tisch Messen</p>
+            <div class="price">39.90Fr</div>
+            <button class="buy-btn" onclick="addToCart('Lineal', 39.90)">Kaufen</button>
+        </div>
+        <!-- Produkt 4 -->
+        <div class="product">
+            <img src="img/Tastatur.jpg" alt="Produkt 4">
+            <h3>Tastatur</h3>
+            <p>Eine Gaming Tastatur</p>
+            <div class="price">74.90Fr</div>
+            <button class="buy-btn" onclick="addToCart('Tastatur', 74.90)">Kaufen</button>
+        </div>
+        <!-- Produkt 5 -->
+        <div class="product">
+            <img src="img/Maus.jpeg" alt="Produkt 5">
+            <h3>Maus</h3>
+            <p>Eine Gaming Maus</p>
+            <div class="price">59.90Fr</div>
+            <button class="buy-btn" onclick="addToCart('Maus', 59.90)">Kaufen</button>
+        </div>
+        <!-- Produkt 6 -->
+        <div class="product">
+            <img src="img/Pc.jpeg" alt="Produkt 6">
+            <h3>Pc</h3>
+            <p>Ein Gaming Pc</p>
+            <div class="price">1439.90Fr</div>
+            <button class="buy-btn" onclick="addToCart('Pc', 1439.90)">Kaufen</button>
+        </div>
+    </div>
+</div>
+
+<footer>
+    <p>&copy; 2024 Hustle City</p>
+    <p>&copy;Kontakt: info@hustlecity.de</p>
+</footer>
+
+
+<script>
+    const cart = [];
+
+    function toggleCart() {
+        const overlay = document.getElementById('cart-overlay');
+        overlay.style.display = (overlay.style.display === 'flex') ? 'none' : 'flex';
+        updateCart();
+    }
+
+    function updateCart() {
+        const cartDiv = document.getElementById('cart');
+        cartDiv.innerHTML = ""; // Leere den Warenkorb
+
+        if (cart.length === 0) {
+            cartDiv.innerHTML = "<p>Ihr Warenkorb ist leer.</p>";
+            return;
+        }
+
+        cart.forEach((item, index) => {
+            const div = document.createElement('div');
+            div.className = 'cart-item';
+            div.innerHTML = `
+                <span>${item.name}</span>
+                <span>${item.price.toFixed(2)}Fr</span>
+                <button class="remove-btn" onclick="removeFromCart(${index})">Entfernen</button>
+            `;
+            cartDiv.appendChild(div);
+        });
+    }
+
+    function addToCart(name, price) {
+        cart.push({ name: name, price: price });
+        alert(`${name} wurde zum Warenkorb hinzugefügt!`); // Benachrichtigung für den Benutzer
+    }
+
+    function removeFromCart(index) {
+        const removedItem = cart.splice(index, 1)[0]; // Entferne das Element und speichere es in removedItem
+        alert(`${removedItem.name} wurde aus dem Warenkorb entfernt!`); // Benachrichtigung für den Benutzer
+        updateCart(); // Aktualisiere den Warenkorb
+    }
+</script>
+
+</body>
+</html>

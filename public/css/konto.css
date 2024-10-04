@@ -1,0 +1,102 @@
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+header {
+    display: flex;
+    justify-content: space-between; /* Abstand zwischen den Elementen */
+    align-items: center;
+    border-bottom: 2px solid #f4f4f4;
+    padding-bottom: 10px;
+    position: relative; /* Ermöglicht das Zentrieren des Logos */
+}
+
+.shop-logo {
+    width: 150px; /* Behalte die Breite des Logos */
+    height: auto; /* Höhe automatisch anpassen, um das Seitenverhältnis zu erhalten */
+    margin-right: 20px; /* Abstand zwischen Logo und Titel */
+    position: fixed; /* Positionierung */
+}
+
+h1 {
+    margin: 0;
+}
+
+.logout {
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+}
+
+.logout:hover {
+    color: #555;
+}
+
+.account-info, .order-history, .settings {
+    margin-top: 20px;
+}
+
+h2 {
+    margin-top: 0;
+}
+
+.edit-button, .settings-button {
+    background-color: #333;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.edit-button:hover, .settings-button:hover {
+    background-color: #555;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+th, td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+th {
+    background-color: #f4f4f4;
+}
+
+.back-button-container {
+    margin-top: 20px; /* Abstand zum vorherigen Inhalt */
+}
+
+.back-button {
+    display: inline-block; /* Damit es wie ein Button aussieht */
+    background-color: #333;
+    color: #fff;
+    text-decoration: none; /* Keine Unterstreichung */
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center;
+}
+
+.back-button:hover {
+    background-color: #555;
+}

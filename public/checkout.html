@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout - Hustle City</title>
+    <link rel="icon" href="assets/Logo 1.webp" type="image/x-icon">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+        }
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            margin-bottom: 20px;
+        }
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 0;
+            border-bottom: 1px solid #eee;
+        }
+        .total {
+            font-weight: bold;
+            margin-top: 20px;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        .form-group input, .form-group select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        .payment-details {
+            display: none;
+        }
+        .buy-btn {
+            display: inline-block;
+            padding: 10px 15px;
+            background-color: #007BFF;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            text-align: center;
+        }
+        .buy-btn:hover {
+            background-color: #0056b3;
+        }
+
+        /* Header Logo */
+.shop-logo {
+    position: absolute;
+    top: 10px; /* Abstand vom oberen Rand */
+    left: 20px; /* Abstand vom linken Rand */
+    max-width: 100px; /* Größe des Logos anpassen */
+    height: auto;
+}
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Hustle City Checkout</h1>
+    <img src="assets/Logo 1.webp" alt="Shop Logo" class="shop-logo">
+    <nav>
+        <a href="Loggedin.html">Home</a>
+        <a href="loginproducts.html">Produkte</a>
+        <a href="logincontact.html">Kontakt</a>
+        <a href="warenkorb.html">Warenkorb</a>
+    </nav>
+</header>
+
+<div class="container">
+    <h2>Warenkorb</h2>
+    <div id="cart-checkout">
+        <!-- Hier werden die Warenkorb-Elemente eingefügt -->
+    </div>
+    <div class="total" id="total-price"></div>
+
+    <h2>Lieferadresse</h2>
+    <div class="form-group">
+        <label for="name">Name</label>
+        <input type="text" id="name" placeholder="Ihr Name" required>
+    </div>
+    <div class="form-group">
+        <label for="address">Adresse</label>
+        <input type="text" id="address" placeholder="Ihre Adresse" required>
+    </div>
+    <div class="form-group">
+        <label for="city">Stadt</label>
+        <input type="text" id="city" placeholder="Ihre Stadt" required>
+    </div>
+    <div class="form-group">
+        <label for="postal-code">Postleitzahl</label>
+        <input type="text" id="postal-code" placeholder="Postleitzahl" required>
+    </div>
+    <div class="form-group">
+        <label for="payment-method">Zahlungsmethode</label>
+        <select id="payment-method" onchange="updatePaymentDetails()" required>
+            <option value="">Wählen Sie eine Zahlungsmethode</option>
+            <option value="credit-card">Kreditkarte</option>
+            <option value="paypal">PayPal</option>
+            <option value="bank-transfer">Banküberweisung</option>
+        </select>
+    </div>
+
+    <div id="payment-details" class="payment-details">
+        <h3>Zahlungsdetails</h3>
+        <div id="credit-card-details" class="form-group" style="display:none;">
+            <label for="card-number">Kreditkartennummer</label>
+            <input type="text" id="card-number" placeholder="1234 5678 9012 3456">
+            <label for="expiry-date">Ablaufdatum</label>
+            <input type="text" id="expiry-date" placeholder="MM/YY">
+            <label for="cvv">CVV</label>
+            <input type="text" id="cvv" placeholder="123">
+        </div>
+        <div id="paypal-details" class="form-group" style="display:none;">
+            <label for="paypal-email">PayPal E-Mail</label>
+            <input type="email" id="paypal-email" placeholder="Ihre PayPal E-Mail">
+        </div>
+        <div id="bank-transfer-details" class="form-group" style="display:none;">
+            <label for="bank-account">Bankkontonummer</label>
+            <input type="text" id="bank-account" placeholder="Ihre Bankkontonummer">
+            <label for="bank-code">IBAN</label>
+            <input type="text" id="bank-code" placeholder="Ihre IBAN">
+        </div>
+    </div>
+
+    <a href="#" class="buy-btn" onclick="completePurchase()">Kaufen</a>
+</div>
+
+<script>
+    const cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+    function loadCartItems() {
+        const cartDiv = document.getElementById('cart-checkout');
+        cartDiv.innerHTML = ""; // Leere den Warenkorb
+
+        if (cart.length === 0) {
+            cartDiv.innerHTML = "<p>Ihr Warenkorb ist leer.</p>";
+            document.getElementById('total-price').innerText = "";
+            return;
+        }
+
+        let total = 0;
+        cart.forEach(item => {
+            const div = document.createElement('div');
+            div.className = 'cart-item';
+            div.innerHTML = `
+                <span>${item.name}</span>
+                <span>${item.price.toFixed(2)} Fr</span>
+            `;
+            cartDiv.appendChild(div);
+            total += item.price;
+        });
+        document.getElementById('total-price').innerText = `Gesamt: ${total.toFixed(2)} Fr`;
+    }
+
+    // Diese Funktion wird aufgerufen, wenn die Seite geladen wird
+    window.onload = function() {
+        loadCartItems(); // Lade die Warenkorb-Elemente beim Laden der Seite
+    };
+
+    function updatePaymentDetails() {
+        const paymentMethod = document.getElementById('payment-method').value;
+        const paymentDetailsDiv = document.getElementById('payment-details');
+        const creditCardDetails = document.getElementById('credit-card-details');
+        const paypalDetails = document.getElementById('paypal-details');
+        const bankTransferDetails = document.getElementById('bank-transfer-details');
+
+        // Zeige die entsprechenden Zahlungsdetails basierend auf der Zahlungsmethode
+        paymentDetailsDiv.style.display = 'block';
+        creditCardDetails.style.display = 'none';
+        paypalDetails.style.display = 'none';
+        bankTransferDetails.style.display = 'none';
+
+        if (paymentMethod === 'credit-card') {
+            creditCardDetails.style.display = 'block';
+        } else if (paymentMethod === 'paypal') {
+            paypalDetails.style.display = 'block';
+        } else if (paymentMethod === 'bank-transfer') {
+            bankTransferDetails.style.display = 'block';
+        }
+    }
+
+    function completePurchase() {
+        const name = document.getElementById('name').value;
+        const address = document.getElementById('address').value;
+        const city = document.getElementById('city').value;
+        const postalCode = document.getElementById('postal-code').value;
+        const paymentMethod = document.getElementById('payment-method').value;
+
+        if (!name || !address || !city || !postalCode || !paymentMethod) {
+            alert('Bitte füllen Sie alle Felder aus.');
+            return;
+        }
+
+        // Überprüfen Sie die Zahlungsdetails je nach Zahlungsmethode
+        if (paymentMethod === 'credit-card') {
+            const cardNumber = document.getElementById('card-number').value;
+            const expiryDate = document.getElementById('expiry-date').value;
+            const cvv = document.getElementById('cvv').value;
+            if (!cardNumber || !expiryDate || !cvv) {
+                alert('Bitte füllen Sie alle Kreditkartendetails aus.');
+                return;
+            }
+        } else if (paymentMethod === 'paypal') {
+            const paypalEmail = document.getElementById('paypal-email').value;
+            if (!paypalEmail) {
+                alert('Bitte geben Sie Ihre PayPal E-Mail ein.');
+                return;
+            }
+        } else if (paymentMethod === 'bank-transfer') {
+            const bankAccount = document.getElementById('bank-account').value;
+            const bankCode = document.getElementById('bank-code').value;
+            if (!bankAccount || !bankCode) {
+                alert('Bitte geben Sie Ihre Bankkontonummer und Bankleitzahl ein.');
+                return;
+            }
+        }
+
+        alert(`Danke für Ihren Kauf, ${name}! Ihr Gesamtbetrag beträgt ${document.getElementById('total-price').innerText}.`);
+        
+        // Hier können Sie eine Funktion zum Speichern oder Verarbeiten des Kaufs hinzufügen
+        // z.B. Daten an einen Server senden oder lokal speichern
+        localStorage.removeItem('cart'); // Leeren des Warenkorbs
+        window.location.href = 'Loggedin.html'; // Weiterleitung zur Bestätigungsseite oder Startseite
+    }
+</script>
+
+
+<footer>
+    <p>&copy; 2024 Hustle City</p>
+    <p>Kontakt: info@hustlecity.de</p>
+</footer>
+
+</body>
+</html>

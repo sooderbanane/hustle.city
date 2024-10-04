@@ -45,11 +45,11 @@
             firstName: firstName,
             lastName:lastName
         };
-        showMessage('Account Created Successfully', 'signUpMessage');
+        showMessage('Account wurde Erstellt', 'signUpMessage');
         const docRef=doc(db, "users", user.uid);
         setDoc(docRef,userData)
         .then(()=>{
-            window.location.href='index.html';
+            window.location.href='loggedin.html';
         })
         .catch((error)=>{
             console.error("error writing document", error);
@@ -58,11 +58,11 @@
     })
     .catch((error)=>{
         const errorCode=error.code;
-        if(errorCode=='auth/email-already-in-use'){
+        if(errorCode=='auth/email schon vergeben'){
             showMessage('Email Address Already Exists !!!', 'signUpMessage');
         }
         else{
-            showMessage('unable to create User', 'signUpMessage');
+            showMessage('es kann kein konto Erstellt werden', 'signUpMessage');
         }
     })
  });
@@ -76,10 +76,10 @@
 
     signInWithEmailAndPassword(auth, email,password)
     .then((userCredential)=>{
-        showMessage('login is successful', 'signInMessage');
+        showMessage('login Erfolgreich', 'signInMessage');
         const user=userCredential.user;
         localStorage.setItem('loggedInUserId', user.uid);
-        window.location.href='homepage.html';
+        window.location.href='loggedin.html';
     })
     .catch((error)=>{
         const errorCode=error.code;

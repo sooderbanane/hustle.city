@@ -75,3 +75,21 @@ input[type="submit"]:hover {
 .switch-link {
     margin-top: 20px;
 }
+
+.button-container {
+    margin-top: 5cm; /* Verschiebe den ganzen Button-Container nach unten */
+    text-align: center; /* Zentriere den Button (optional, falls gewünscht) */
+}
+
+.btn {
+    padding: 10px 20px;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background-color: #555;
+}

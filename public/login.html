@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Einloggen</title>
+    <link rel="icon" href="assets/Logo 1.webp" type="image/x-icon">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="style.css">
     <script type="module" src="js/firebaseauth.js"></script>
@@ -15,13 +16,13 @@
           <div id="signInMessage" class="messageDiv" style="display:none;"></div>
           <div class="input-group">
               <i class="fas fa-envelope"></i>
-              <input type="email" id="email" placeholder="E-Mail" required>
               <label for="email">E-Mail</label>
+              <input type="email" id="email" placeholder="E-Mail" required>
           </div>
           <div class="input-group">
               <i class="fas fa-lock"></i>
-              <input type="password" id="password" placeholder="Passwort" required>
               <label for="password">Passwort</label>
+              <input type="password" id="password" placeholder="Passwort" required>
           </div>
           <p class="recover">
             <a href="#">Passwort vergessen?</a>
@@ -31,13 +32,28 @@
         <div class="links">
           <p>Haben Sie noch kein Konto?</p>
           <a href="register.html" id="signUpButton">Registrieren</a>
+
+          <div class="button-container">
+            <button class="btn" id="back">Zurück</button>
         </div>
-    </div>
+        
 
     <script src="js/script.js"></script>
 
     <script>
-        // Bildpfaden
+        document.getElementById('back').addEventListener('click', function() {
+            window.location.href = 'index.html'; 
+        });
+    </script>
+    
+    <script>
+        document.getElementById('submitSignIn').addEventListener('click', function() {
+            window.location.href = 'Loggedin.html'; 
+        });
+    </script>
+    
+    <script>
+        
         const images = [
             'img/Hintergrund2.jpg',
             'img/Hintergrund3.jpg',
@@ -46,10 +62,9 @@
     
         let currentIndex = 0; 
         const changeInterval = 30 * 5 * 1000; // in Millisekunden 
-    
-        // Funktion zum Ändern des Hintergrundbildes
+    s
         function changeBackground() {
-            currentIndex = (currentIndex + 1) % images.length; // Nächster Index, Schleife zurück zum ersten Bild, wenn am Ende
+            currentIndex = (currentIndex + 1) % images.length; 
             document.body.style.backgroundImage = `url('${images[currentIndex]}')`;
         }
     

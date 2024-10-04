@@ -4,22 +4,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hustle City - Home</title>
+    <link rel="icon" href="assets/Logo 1.webp" type="image/x-icon">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap">
-    <link rel="stylesheet" href="assets/style.css">
+    <link rel="stylesheet" href="css/style.css">
  
 </head>
 <body>
 
 <header>
     <h1>Willkommen bei Hustle City</h1>
-    <img src="img/Logo 1.webp" alt="Shop Logo" class="shop-logo">
+    <img src="assets/Logo 1.webp" alt="Shop Logo" class="shop-logo">
     <nav>
         <a href="index.html">Home</a>
         <a href="products.html">Produkte</a>
         <a href="contact.html">Kontakt</a>
     </nav>
     <div class="auth-links">
-        <a href="dashboard.html" class="button">Zum Dashboard</a>
+        <a href="#" class="warenkorb-link" onclick="toggleCart()"></a>
+            <i class="fas fa-shopping-cart"></i>
+        </a>
+      
         <a href="register.html">Anmelden</a>
         
     </div>
@@ -52,6 +56,30 @@
             <h3>Lineal</h3>
             <p>Mit Lineal kannst du den Tisch Messen</p>
             <div class="price">39.90Fr</div>
+            <a href="#" class="buy-btn">Kaufen</a>
+        </div>
+        <!-- Produkt 4 -->
+        <div class="product">
+            <img src="img/Tastatur.jpg" alt="Produkt 1">
+            <h3>Tastatur</h3>
+            <p>Eine Gaming Tastatur</p>
+            <div class="price">74.90Fr</div>
+            <a href="#" class="buy-btn">Kaufen</a>
+        </div>
+        <!-- Produkt 5 -->
+        <div class="product">
+            <img src="img/Maus.jpeg" alt="Produkt 2">
+            <h3>Maus</h3>
+            <p>Eine Gaming Maus</p>
+            <div class="price">59.90Fr</div>
+            <a href="#" class="buy-btn">Kaufen</a>
+        </div>
+        <!-- Produkt 6 -->
+        <div class="product">
+            <img src="img/Pc.jpeg" alt="Produkt 3">
+            <h3>Pc</h3>
+            <p>Ein Gaming Pc</p>
+            <div class="price">1439.90Fr</div>
             <a href="#" class="buy-btn">Kaufen</a>
         </div>
     </div>
